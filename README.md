@@ -99,6 +99,16 @@ actions tied to the current ChatGPT user. Leave public content anonymous.
 
 Use build commands for targeted diagnosis after a remote failure, not as part of the normal checkpoint path.
 
+## GitHub Pages
+
+The static HallazGo application is stored in `public/`. The workflow at
+`.github/workflows/deploy-pages.yml` publishes that directory to GitHub Pages
+whenever `main` receives changes affecting the website. It can also be started
+manually from the repository's Actions tab.
+
+Production URL:
+<https://andersonbaldeon20-ui.github.io/HallazGo-COAR/>
+
 The timeout defaults can be overridden for a controlled canary with `SITES_INSTALL_TIMEOUT`, `SITES_INSTALL_KILL_AFTER`, `SITES_BUILD_TIMEOUT`, and `SITES_BUILD_KILL_AFTER`. A timeout fails the command; the helpers never retry an unchanged install or build.
 
 ## Learn More
