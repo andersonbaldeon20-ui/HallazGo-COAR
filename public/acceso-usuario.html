@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HallazGo · Acceso</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+  href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap"
+  rel="stylesheet"
+>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script
+  src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+  defer
+></script>
+
+<script
+  src="assets/js/supabase-config.js"
+  defer
+></script>
+<script
+  src="assets/js/security-session.js"
+  defer
+></script>
+
+<script
+  src="assets/js/auth-supabase.js"
+  defer
+></script>
+</head>
+<body
+  data-page="acceso-usuario"
+  class="cinematic-page cinematic-login"
+>
+
+<header class="cinematic-header">
+
+  <a
+    class="cinematic-logo"
+    href="index.html"
+    aria-label="Ir al inicio de HallaZGo"
+  >
+    <span>H</span>
+    <strong>HallaZGo</strong>
+  </a>
+
+  <nav
+    class="cinematic-nav"
+    aria-label="Navegación principal"
+  >
+    <a href="index.html">
+      Inicio
+    </a>
+
+    <a href="reportar-objeto.html">
+      Reportar objeto
+    </a>
+
+    <a href="buscar-objetos.html">
+      Buscar objetos
+    </a>
+
+    <a href="mis-reportes.html">
+      Mis reportes
+    </a>
+
+    <a href="como-funciona.html">
+      Cómo funciona
+    </a>
+  </nav>
+
+  <a
+    class="cinematic-user is-active"
+    href="seleccionar-rol.html"
+    aria-label="Volver a seleccionar rol"
+    title="Volver a seleccionar rol"
+  >
+    <svg viewBox="0 0 48 48" aria-hidden="true">
+      <circle cx="24" cy="16" r="7"></circle>
+
+      <path
+        d="M11 39
+           C11 30.5 16.5 25 24 25
+           C31.5 25 37 30.5 37 39"
+      ></path>
+    </svg>
+  </a>
+
+</header>
+<section class="acceso-usuario" data-acceso-section>
+  <div class="acceso-usuario__shell">
+<a class="acceso-usuario__back" href="seleccionar-rol.html">
+  ← Cambiar tipo de cuenta
+</a>
+
+    <div class="acceso-usuario__layout">
+      <aside class="acceso-usuario__visual">
+        <div class="acceso-usuario__wave"></div>
+
+        <div class="acceso-usuario__brand">
+          <p>HALLAZGO</p>
+          <h1 data-role-title>Bienvenido</h1>
+          <span data-role-description>
+            Accede a tu cuenta para reportar, buscar y recuperar objetos de forma segura.
+          </span>
+        </div>
+
+        <div class="acceso-usuario__benefits">
+          <div>
+            <span>📊</span>
+            <div>
+              <strong>Reportes</strong>
+              <small>Registra y consulta objetos asociados a tu perfil.</small>
+            </div>
+          </div>
+
+          <div>
+            <span>🔐</span>
+            <div>
+              <strong>Seguridad</strong>
+              <small>El acceso cambia según tu tipo de usuario.</small>
+            </div>
+          </div>
+
+          <div>
+            <span>⚡</span>
+            <div>
+              <strong>Rapidez</strong>
+              <small>Encuentra coincidencias de forma ordenada.</small>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+<section class="acceso-usuario__content">
+  <div class="acceso-usuario__icon">
+    🔒
+  </div>
+
+  <div
+    class="acceso-usuario__tabs"
+    role="tablist"
+    aria-label="Opciones de acceso"
+  >
+    <button
+      type="button"
+      class="acceso-usuario__tab is-active"
+      data-auth-tab="register"
+      aria-selected="true"
+    >
+      Crear cuenta
+    </button>
+
+    <button
+      type="button"
+      class="acceso-usuario__tab"
+      data-auth-tab="login"
+      aria-selected="false"
+    >
+      Iniciar sesión
+    </button>
+  </div>
+
+  <!-- ===================================================
+       CREAR CUENTA
+       =================================================== -->
+
+  <form
+    class="acceso-usuario__form"
+    data-register-form
+    style="
+      display: grid !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      position: static !important;
+      width: 100% !important;
+      height: auto !important;
+      overflow: visible !important;
+    "
+  >
+    <h2 data-register-title>
+      Crear cuenta
+    </h2>
+
+    <p class="acceso-usuario__subtitle">
+      Completa tus datos para continuar.
+    </p>
+
+    <input
+      type="hidden"
+      name="requestedRole"
+      data-requested-role
+    >
+
+    <div
+      class="acceso-usuario__notice"
+      data-selected-role-message
+    ></div>
+
+    <div class="acceso-usuario__row">
+      <div class="acceso-usuario__field">
+        <label for="registro-nombres">
+          Nombres
+        </label>
+
+        <input
+          id="registro-nombres"
+          name="firstName"
+          type="text"
+          placeholder="Ingresa tus nombres"
+          autocomplete="given-name"
+          required
+        >
+      </div>
+
+      <div class="acceso-usuario__field">
+        <label for="registro-apellidos">
+          Apellidos
+        </label>
+
+        <input
+          id="registro-apellidos"
+          name="lastName"
+          type="text"
+          placeholder="Ingresa tus apellidos"
+          autocomplete="family-name"
+          required
+        >
+      </div>
+    </div>
+
+    <div class="acceso-usuario__field">
+      <label for="registro-email">
+        Correo electrónico
+      </label>
+
+      <input
+        id="registro-email"
+        name="email"
+        type="email"
+        placeholder="correo@ejemplo.com"
+        autocomplete="email"
+        required
+        data-register-email
+      >
+
+      <p
+        class="acceso-usuario__help"
+        data-role-preview
+      >
+        Ingresa tu correo para validar tu tipo de cuenta.
+      </p>
+    </div>
+
+    <div class="acceso-usuario__field">
+      <label for="registro-fecha-nacimiento">
+        Fecha de nacimiento
+      </label>
+
+      <input
+        id="registro-fecha-nacimiento"
+        name="birthDate"
+        type="date"
+        autocomplete="bday"
+        required
+        data-birth-date
+      >
+
+      <p
+        class="acceso-usuario__help"
+        data-age-feedback
+        aria-live="polite"
+      >
+        Se registrará la edad que tienes al crear la cuenta
+        para aplicar las medidas de protección correspondientes.
+      </p>
+    </div>
+
+    <div class="acceso-usuario__row">
+      <div class="acceso-usuario__field">
+        <label for="registro-password">
+          Crear contraseña
+        </label>
+
+        <input
+          id="registro-password"
+          name="password"
+          type="password"
+          placeholder="Mínimo 6 caracteres"
+          autocomplete="new-password"
+          minlength="6"
+          required
+        >
+      </div>
+
+      <div class="acceso-usuario__field">
+        <label for="registro-confirm-password">
+          Confirmar contraseña
+        </label>
+
+        <input
+          id="registro-confirm-password"
+          name="confirmPassword"
+          type="password"
+          placeholder="Repite tu contraseña"
+          autocomplete="new-password"
+          minlength="6"
+          required
+        >
+      </div>
+    </div>
+
+    <button
+      class="acceso-usuario__button acceso-usuario__button--primary"
+      type="submit"
+      data-register-submit
+    >
+      Continuar
+    </button>
+
+    <p
+      class="acceso-usuario__feedback"
+      data-register-feedback
+      aria-live="polite"
+    ></p>
+  </form>
+
+  <!-- ===================================================
+       INICIAR SESIÓN
+       =================================================== -->
+
+  <form
+    class="acceso-usuario__form"
+    data-login-form
+    hidden
+    style="
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      position: absolute !important;
+      width: 0 !important;
+      height: 0 !important;
+      overflow: hidden !important;
+    "
+  >
+    <h2 data-login-title>
+      Iniciar sesión
+    </h2>
+
+    <p class="acceso-usuario__subtitle">
+      Ingresa tus credenciales para continuar.
+    </p>
+
+    <div
+      class="acceso-usuario__notice"
+      data-login-role-message
+    ></div>
+
+    <div class="acceso-usuario__field">
+      <label for="login-email">
+        Correo electrónico
+      </label>
+
+      <input
+        id="login-email"
+        name="email"
+        type="email"
+        placeholder="correo@ejemplo.com"
+        autocomplete="email"
+        required
+      >
+    </div>
+
+    <div class="acceso-usuario__field">
+      <label for="login-password">
+        Contraseña
+      </label>
+
+      <input
+        id="login-password"
+        name="password"
+        type="password"
+        placeholder="Ingresa tu contraseña"
+        autocomplete="current-password"
+        required
+      >
+    </div>
+
+    <button
+      class="acceso-usuario__button acceso-usuario__button--primary"
+      type="submit"
+    >
+      Continuar
+    </button>
+
+    <p
+      class="acceso-usuario__feedback"
+      data-login-feedback
+      aria-live="polite"
+    ></p>
+  </form>
+
+  <form
+    class="acceso-usuario__form"
+    data-verify-form
+    hidden
+    style="display: none !important;"
+  ></form>
+</section>
+<script>
+  (() => {
+    function initializeAccessForms() {
+      const registerTab =
+        document.querySelector(
+          '[data-auth-tab="register"]'
+        );
+
+      const loginTab =
+        document.querySelector(
+          '[data-auth-tab="login"]'
+        );
+
+      const registerForm =
+        document.querySelector(
+          "[data-register-form]"
+        );
+
+      const loginForm =
+        document.querySelector(
+          "[data-login-form]"
+        );
+
+      const verifyForm =
+        document.querySelector(
+          "[data-verify-form]"
+        );
+
+      if (
+        !(registerTab instanceof HTMLButtonElement) ||
+        !(loginTab instanceof HTMLButtonElement) ||
+        !(registerForm instanceof HTMLFormElement) ||
+        !(loginForm instanceof HTMLFormElement)
+      ) {
+        console.error(
+          "No se encontraron los formularios de acceso."
+        );
+
+        return;
+      }
+
+      function setVisible(
+        form,
+        visible
+      ) {
+        if (
+          !(form instanceof HTMLFormElement)
+        ) {
+          return;
+        }
+
+        form.hidden = !visible;
+
+        form.setAttribute(
+          "aria-hidden",
+          String(!visible)
+        );
+
+        form.style.setProperty(
+          "display",
+          visible ? "grid" : "none",
+          "important"
+        );
+
+        form.style.setProperty(
+          "visibility",
+          visible ? "visible" : "hidden",
+          "important"
+        );
+
+        form.style.setProperty(
+          "opacity",
+          visible ? "1" : "0",
+          "important"
+        );
+
+        form.style.setProperty(
+          "position",
+          visible ? "static" : "absolute",
+          "important"
+        );
+
+        form.style.setProperty(
+          "width",
+          visible ? "100%" : "0",
+          "important"
+        );
+
+        form.style.setProperty(
+          "height",
+          visible ? "auto" : "0",
+          "important"
+        );
+
+        form.style.setProperty(
+          "max-height",
+          visible ? "none" : "0",
+          "important"
+        );
+
+        form.style.setProperty(
+          "overflow",
+          visible ? "visible" : "hidden",
+          "important"
+        );
+
+        form.style.setProperty(
+          "pointer-events",
+          visible ? "auto" : "none",
+          "important"
+        );
+      }
+
+      function showAccessForm(type) {
+        const showRegister =
+          type === "register";
+
+        const showLogin =
+          type === "login";
+
+        setVisible(
+          registerForm,
+          showRegister
+        );
+
+        setVisible(
+          loginForm,
+          showLogin
+        );
+
+        setVisible(
+          verifyForm,
+          false
+        );
+
+        registerTab.classList.toggle(
+          "is-active",
+          showRegister
+        );
+
+        loginTab.classList.toggle(
+          "is-active",
+          showLogin
+        );
+
+        registerTab.setAttribute(
+          "aria-selected",
+          String(showRegister)
+        );
+
+        loginTab.setAttribute(
+          "aria-selected",
+          String(showLogin)
+        );
+      }
+
+      function forceAccessForm(type) {
+        showAccessForm(type);
+
+        window.requestAnimationFrame(
+          () => {
+            showAccessForm(type);
+          }
+        );
+
+        window.setTimeout(
+          () => {
+            showAccessForm(type);
+          },
+          50
+        );
+      }
+
+      registerTab.addEventListener(
+        "click",
+        () => {
+          forceAccessForm(
+            "register"
+          );
+        },
+        true
+      );
+
+      loginTab.addEventListener(
+        "click",
+        () => {
+          forceAccessForm(
+            "login"
+          );
+        },
+        true
+      );
+
+      window.setTimeout(
+        () => {
+          const initialType =
+            loginTab.classList.contains(
+              "is-active"
+            )
+              ? "login"
+              : "register";
+
+          forceAccessForm(
+            initialType
+          );
+        },
+        100
+      );
+    }
+
+    if (
+      document.readyState ===
+      "loading"
+    ) {
+      document.addEventListener(
+        "DOMContentLoaded",
+        initializeAccessForms,
+        {
+          once: true
+        }
+      );
+    } else {
+      initializeAccessForms();
+    }
+  })();
+</script>
+<script>
+  (() => {
+    const registerTab =
+      document.querySelector(
+        '[data-auth-tab="register"]'
+      );
+
+    const loginTab =
+      document.querySelector(
+        '[data-auth-tab="login"]'
+      );
+
+    const registerForm =
+      document.querySelector(
+        "[data-register-form]"
+      );
+
+    const loginForm =
+      document.querySelector(
+        "[data-login-form]"
+      );
+
+    const verifyForm =
+      document.querySelector(
+        "[data-verify-form]"
+      );
+
+    function forceFormVisibility(
+      form,
+      visible
+    ) {
+      if (!(form instanceof HTMLFormElement)) {
+        return;
+      }
+
+      form.hidden = !visible;
+
+      form.setAttribute(
+        "aria-hidden",
+        String(!visible)
+      );
+
+      form.style.setProperty(
+        "display",
+        visible ? "grid" : "none",
+        "important"
+      );
+
+      form.style.setProperty(
+        "visibility",
+        visible ? "visible" : "hidden",
+        "important"
+      );
+
+      form.style.setProperty(
+        "opacity",
+        visible ? "1" : "0",
+        "important"
+      );
+
+      form.style.setProperty(
+        "position",
+        visible ? "static" : "absolute",
+        "important"
+      );
+
+      form.style.setProperty(
+        "width",
+        visible ? "100%" : "0",
+        "important"
+      );
+
+      form.style.setProperty(
+        "height",
+        visible ? "auto" : "0",
+        "important"
+      );
+
+      form.style.setProperty(
+        "max-height",
+        visible ? "none" : "0",
+        "important"
+      );
+
+      form.style.setProperty(
+        "overflow",
+        visible ? "visible" : "hidden",
+        "important"
+      );
+
+      form.style.setProperty(
+        "pointer-events",
+        visible ? "auto" : "none",
+        "important"
+      );
+    }
+
+    function showAccessTab(type) {
+      const showRegister =
+        type === "register";
+
+      const showLogin =
+        type === "login";
+
+      forceFormVisibility(
+        registerForm,
+        showRegister
+      );
+
+      forceFormVisibility(
+        loginForm,
+        showLogin
+      );
+
+      forceFormVisibility(
+        verifyForm,
+        false
+      );
+
+      registerTab?.classList.toggle(
+        "is-active",
+        showRegister
+      );
+
+      loginTab?.classList.toggle(
+        "is-active",
+        showLogin
+      );
+
+      registerTab?.setAttribute(
+        "aria-selected",
+        String(showRegister)
+      );
+
+      loginTab?.setAttribute(
+        "aria-selected",
+        String(showLogin)
+      );
+    }
+
+    registerTab?.addEventListener(
+      "click",
+      () => {
+        window.setTimeout(
+          () => showAccessTab("register"),
+          0
+        );
+      }
+    );
+
+    loginTab?.addEventListener(
+      "click",
+      () => {
+        window.setTimeout(
+          () => showAccessTab("login"),
+          0
+        );
+      }
+    );
+
+    showAccessTab("register");
+  })();
+</script>
+</body>
+</html>

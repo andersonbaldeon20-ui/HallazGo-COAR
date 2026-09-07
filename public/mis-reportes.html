@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>HallazGo · Mis reportes</title>
+
+  <!-- =====================================================
+       TIPOGRAFÍAS
+       ===================================================== -->
+
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link
+    rel="manifest"
+    href="manifest.json"
+  >
+
+  <!-- =====================================================
+       ESTILOS
+       ===================================================== -->
+
+  <link
+    rel="stylesheet"
+    href="assets/css/styles.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="assets/css/sidebar-layout.css"
+  >
+
+  <!-- =====================================================
+       SUPABASE
+       ===================================================== -->
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+    defer
+  ></script>
+
+  <script
+    src="assets/js/supabase-config.js"
+    defer
+  ></script>
+  <script src="assets/js/mfa-guard.js" defer></script>
+
+  <script
+    src="assets/js/mis-reportes-supabase.js"
+    defer
+  ></script>
+
+  <!-- =====================================================
+       BARRA LATERAL Y FUNCIONES GENERALES
+       ===================================================== -->
+
+  <script
+    src="assets/js/responsive-sidebar.js"
+    defer
+  ></script>
+
+  <script
+    src="assets/js/app.js"
+    defer
+  ></script>
+</head>
+
+<body
+  data-page="mis-reportes"
+  class="cinematic-page cinematic-reports"
+>
+
+  <!-- =====================================================
+       ENCABEZADO
+       ===================================================== -->
+
+  <header class="cinematic-header">
+
+    <a
+      class="cinematic-logo"
+      href="index.html"
+      aria-label="Ir al inicio de HallaZGo"
+    >
+      <span>H</span>
+      <strong>HallaZGo</strong>
+    </a>
+
+    <nav
+      class="cinematic-nav"
+      aria-label="Navegación principal"
+    >
+
+      <a href="index.html">
+        Inicio
+      </a>
+
+      <a href="reportar-objeto.html">
+        Reportar objeto
+      </a>
+
+      <a href="buscar-objetos.html">
+        Buscar objetos
+      </a>
+
+      <a
+        class="is-active"
+        href="mis-reportes.html"
+        aria-current="page"
+      >
+        Mis reportes
+      </a>
+
+      <a href="como-funciona.html">
+        Cómo funciona
+      </a>
+
+    </nav>
+
+    <a
+      class="cinematic-user"
+      href="seleccionar-rol.html"
+      aria-label="Elegir rol e ingresar"
+      title="Elegir rol e ingresar"
+    >
+      <svg
+        viewBox="0 0 48 48"
+        aria-hidden="true"
+      >
+        <circle
+          cx="24"
+          cy="16"
+          r="7"
+        ></circle>
+
+        <path
+          d="
+            M11 39
+            C11 30.5 16.5 25 24 25
+            C31.5 25 37 30.5 37 39
+          "
+        ></path>
+      </svg>
+    </a>
+
+  </header>
+
+  <!-- =====================================================
+       CONTENIDO PRINCIPAL
+       ===================================================== -->
+
+  <main>
+
+    <section
+      class="mis-reportes"
+      data-mis-reportes-section
+    >
+
+      <div class="mis-reportes__contenedor">
+
+        <!-- ENCABEZADO -->
+
+        <div class="mis-reportes__encabezado">
+
+          <div>
+
+            <p class="mis-reportes__etiqueta">
+              HALLAZGO
+            </p>
+
+            <h1>
+              Mis reportes
+            </h1>
+
+            <p>
+              Consulta el estado de los objetos encontrados que
+              registraste y revisa las reclamaciones recibidas.
+            </p>
+
+          </div>
+
+          <div
+            class="mis-reportes__resumen"
+            aria-live="polite"
+          >
+            <strong data-mis-reportes-total>
+              0
+            </strong>
+
+            <span>
+              reportes registrados
+            </span>
+          </div>
+
+        </div>
+
+        <!-- ESTADO VACÍO -->
+
+        <div
+          class="mis-reportes__empty"
+          data-mis-reportes-empty
+        >
+
+          <div class="mis-reportes__empty-icon">
+            ⌕
+          </div>
+
+          <h2>
+            Aún no tienes reportes registrados
+          </h2>
+
+          <p>
+            Cuando reportes un objeto encontrado, aparecerá
+            aquí con su estado y las posibles reclamaciones.
+          </p>
+
+          <a
+            class="mis-reportes__boton"
+            href="reportar-objeto.html"
+          >
+            Reportar un objeto
+          </a>
+
+        </div>
+
+        <!-- LISTA DE REPORTES -->
+
+        <div
+          class="mis-reportes__lista"
+          data-mis-reportes-list
+          hidden
+        ></div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+</body>
+
+</html>

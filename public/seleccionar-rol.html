@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HallazGo · Seleccionar rol</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+  href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap"
+  rel="stylesheet"
+>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script src="assets/js/app.js" defer></script>
+</head>
+<body
+  data-page="seleccionar-rol"
+  class="cinematic-page cinematic-role"
+>
+
+<header class="cinematic-header">
+
+  <a
+    class="cinematic-logo"
+    href="index.html"
+    aria-label="Ir al inicio de HallaZGo"
+  >
+    <span>H</span>
+    <strong>HallaZGo</strong>
+  </a>
+
+  <nav
+    class="cinematic-nav"
+    aria-label="Navegación principal"
+  >
+    <a href="index.html">
+      Inicio
+    </a>
+
+    <a href="reportar-objeto.html">
+      Reportar objeto
+    </a>
+
+    <a href="buscar-objetos.html">
+      Buscar objetos
+    </a>
+
+    <a href="mis-reportes.html">
+      Mis reportes
+    </a>
+
+    <a href="como-funciona.html">
+      Cómo funciona
+    </a>
+  </nav>
+
+  <a
+    class="cinematic-user is-active"
+    href="seleccionar-rol.html"
+    aria-label="Seleccionar tipo de cuenta"
+    title="Seleccionar tipo de cuenta"
+  >
+    <svg viewBox="0 0 48 48" aria-hidden="true">
+      <circle cx="24" cy="16" r="7"></circle>
+
+      <path
+        d="M11 39
+           C11 30.5 16.5 25 24 25
+           C31.5 25 37 30.5 37 39"
+      ></path>
+    </svg>
+  </a>
+
+</header>
+<section class="hallazgo-roles-page">
+  <div class="hallazgo-roles-page__wrap">
+
+<a
+  class="hallazgo-roles-page__back"
+  href="index.html"
+>
+  ← Volver al inicio
+</a>
+
+    <div class="hallazgo-roles-page__hero">
+      <p class="hallazgo-roles-page__eyebrow">Acceso · Selección de rol</p>
+      <h1>Elige tu tipo de cuenta</h1>
+      <p>
+        Selecciona el rol que corresponde a tu perfil. Luego podrás crear una cuenta o iniciar sesión.
+      </p>
+    </div>
+
+    <div class="hallazgo-roles-page__grid">
+      <a class="hallazgo-roles-page__card" href="acceso-usuario.html?role=person">
+        <span>01</span>
+        <h2>Persona</h2>
+        <p>Usuario externo al COAR. Puede usar funciones limitadas y no puede abrir chats con usuarios COAR.</p>
+      </a>
+
+      <a class="hallazgo-roles-page__card" href="acceso-usuario.html?role=student">
+        <span>02</span>
+        <h2>Estudiante COAR</h2>
+        <p>Usuario interno de la institución. Puede reportar, buscar y comunicarse dentro del sitio.</p>
+      </a>
+
+      <a class="hallazgo-roles-page__card" href="acceso-usuario.html?role=staff">
+        <span>03</span>
+        <h2>Personal autorizado</h2>
+        <p>Personal de apoyo operativo. Puede reportar, buscar y apoyar en la recuperación de objetos.</p>
+      </a>
+
+      <a class="hallazgo-roles-page__card" href="acceso-usuario.html?role=admin">
+        <span>04</span>
+        <h2>Administrador</h2>
+        <p>Dirección, BYDE o responsables principales. Acceso al panel administrativo y estadísticas.</p>
+      </a>
+    </div>
+
+  </div>
+</section>
+</body>
+</html>

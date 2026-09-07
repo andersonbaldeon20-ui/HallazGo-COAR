@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>HallazGo · Verificación por celular</title>
+
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link
+    rel="manifest"
+    href="manifest.json"
+  >
+
+  <link
+    rel="stylesheet"
+    href="assets/css/styles.css"
+  >
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+    defer
+  ></script>
+
+  <script
+    src="assets/js/supabase-config.js"
+    defer
+  ></script>
+
+  <script
+    src="assets/js/security-session.js"
+    defer
+  ></script>
+
+  <script
+    src="assets/js/mfa-supabase.js"
+    defer
+  ></script>
+
+  <script
+    src="assets/js/app.js"
+    defer
+  ></script>
+</head>
+
+<body
+  data-page="seguridad-cuenta"
+  class="cinematic-page cinematic-security"
+>
+
+  <header class="cinematic-header">
+
+    <a
+      class="cinematic-logo"
+      href="index.html"
+      aria-label="Ir al inicio de HallazGo"
+    >
+      <span>H</span>
+      <strong>HallazGo</strong>
+    </a>
+
+    <nav
+      class="cinematic-nav"
+      aria-label="Navegación principal"
+    >
+      <a href="index.html">Inicio</a>
+      <a href="reportar-objeto.html">Reportar objeto</a>
+      <a href="buscar-objetos.html">Buscar objetos</a>
+      <a href="mis-reportes.html">Mis reportes</a>
+      <a href="como-funciona.html">Cómo funciona</a>
+    </nav>
+
+  </header>
+
+  <main>
+
+    <section
+      class="hallazgo-mfa"
+      data-mfa-page
+    >
+      <div class="hallazgo-mfa__panel">
+
+        <p class="hallazgo-mfa__eyebrow">
+          SEGURIDAD DE LA CUENTA
+        </p>
+
+        <h1>
+          Verificación por celular
+        </h1>
+
+        <p class="hallazgo-mfa__intro">
+          HallazGo utiliza tu número celular únicamente como
+          segundo factor de autenticación. Tu número no se
+          mostrará en perfiles, reclamaciones ni conversaciones.
+        </p>
+
+        <div
+          class="hallazgo-mfa__status"
+          data-mfa-status
+          aria-live="polite"
+        >
+          Comprobando seguridad de la cuenta...
+        </div>
+
+        <!-- ===============================================
+             REGISTRAR TELÉFONO
+             =============================================== -->
+
+        <section
+          class="hallazgo-mfa__section"
+          data-phone-enrollment
+          hidden
+        >
+          <p class="hallazgo-mfa__eyebrow">
+            PRIMERA CONFIGURACIÓN
+          </p>
+
+          <h2>
+            Registra tu celular
+          </h2>
+
+          <p>
+            Escribe el número que utilizarás para recibir
+            códigos de seguridad. Para Perú puedes escribirlo
+            como 987654321 o +51987654321.
+          </p>
+
+          <form data-phone-enrollment-form>
+
+            <label for="hallazgo-phone-number">
+              Número celular
+            </label>
+
+            <input
+              id="hallazgo-phone-number"
+              name="phone"
+              type="tel"
+              inputmode="tel"
+              autocomplete="tel"
+              placeholder="+51 987 654 321"
+              maxlength="24"
+              required
+            >
+
+            <button type="submit">
+              Enviar código por SMS
+            </button>
+
+            <p
+              data-phone-enrollment-feedback
+              aria-live="assertive"
+            ></p>
+
+          </form>
+        </section>
+
+        <!-- ===============================================
+             VERIFICAR CÓDIGO
+             =============================================== -->
+
+        <section
+          class="hallazgo-mfa__section"
+          data-phone-challenge
+          hidden
+        >
+          <p class="hallazgo-mfa__eyebrow">
+            CÓDIGO SMS
+          </p>
+
+          <h2>
+            Confirma tu celular
+          </h2>
+
+          <p>
+            Ingresa el código de seis dígitos enviado al
+            número registrado.
+          </p>
+
+          <div class="hallazgo-mfa__email-destination">
+            Destino:
+            <strong data-phone-destination>
+              celular registrado
+            </strong>
+          </div>
+
+          <button
+            type="button"
+            class="hallazgo-mfa__send-email"
+            data-resend-phone-code
+          >
+            Reenviar código
+          </button>
+
+          <form data-phone-code-form>
+
+            <label for="hallazgo-phone-code">
+              Código recibido
+            </label>
+
+            <input
+              id="hallazgo-phone-code"
+              name="code"
+              type="text"
+              inputmode="numeric"
+              autocomplete="one-time-code"
+              pattern="[0-9]{6}"
+              minlength="6"
+              maxlength="6"
+              placeholder="000000"
+              required
+            >
+
+            <button type="submit">
+              Verificar y continuar
+            </button>
+
+            <p
+              data-phone-code-feedback
+              aria-live="assertive"
+            ></p>
+
+          </form>
+
+          <p class="hallazgo-mfa__email-warning">
+            El número se utiliza exclusivamente para proteger
+            el inicio de sesión de HallazGo.
+          </p>
+        </section>
+
+        <!-- ===============================================
+             COMPLETADO
+             =============================================== -->
+
+        <section
+          class="hallazgo-mfa__section"
+          data-mfa-success
+          hidden
+        >
+          <p class="hallazgo-mfa__eyebrow">
+            IDENTIDAD VERIFICADA
+          </p>
+
+          <h2>
+            Sesión protegida
+          </h2>
+
+          <p>
+            El celular fue verificado correctamente.
+            Continuando hacia HallazGo...
+          </p>
+        </section>
+
+      </div>
+    </section>
+
+  </main>
+
+</body>
+
+</html>

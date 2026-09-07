@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>HallazGo · Reportar objeto</title>
+
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link
+    rel="manifest"
+    href="manifest.json"
+  >
+
+  <link
+    rel="stylesheet"
+    href="assets/css/styles.css"
+  >
+  <link
+  rel="stylesheet"
+  href="assets/css/sidebar-layout.css"
+>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+<script src="assets/js/supabase-config.js" defer></script>
+<script src="assets/js/mfa-guard.js" defer></script>
+<script
+  src="assets/js/responsive-sidebar.js"
+  defer
+></script>
+
+<script
+  src="assets/js/description-privacy.js"
+  defer
+></script>
+
+<script
+  src="assets/js/app.js"
+  defer
+></script>
+</head>
+
+<body
+  data-page="reportar-objeto"
+  class="cinematic-page cinematic-report"
+>
+
+  <!-- =====================================================
+       ENCABEZADO
+       ===================================================== -->
+
+  <header class="cinematic-header">
+
+    <a
+      class="cinematic-logo"
+      href="index.html"
+      aria-label="Ir al inicio de HallazGo"
+    >
+      <span>H</span>
+      <strong>HallazGo</strong>
+    </a>
+
+    <nav
+      class="cinematic-nav"
+      aria-label="Navegación principal"
+    >
+      <a href="index.html">
+        Inicio
+      </a>
+
+      <a
+        class="is-active"
+        href="reportar-objeto.html"
+        aria-current="page"
+      >
+        Reportar objeto
+      </a>
+
+      <a href="buscar-objetos.html">
+        Buscar objetos
+      </a>
+
+      <a href="mis-reportes.html">
+        Mis reportes
+      </a>
+
+      <a href="como-funciona.html">
+        Cómo funciona
+      </a>
+    </nav>
+
+    <a
+      class="cinematic-user"
+      href="seleccionar-rol.html"
+      aria-label="Elegir rol e ingresar"
+      title="Elegir rol e ingresar"
+    >
+      <svg
+        viewBox="0 0 48 48"
+        aria-hidden="true"
+      >
+        <circle
+          cx="24"
+          cy="16"
+          r="7"
+        ></circle>
+
+        <path
+          d="M11 39
+             C11 30.5 16.5 25 24 25
+             C31.5 25 37 30.5 37 39"
+        ></path>
+      </svg>
+    </a>
+
+  </header>
+
+  <!-- =====================================================
+       PÁGINA DE REPORTE
+       ===================================================== -->
+
+  <main>
+
+    <section
+      class="reporte-objeto"
+      aria-labelledby="reporte-objeto-title"
+    >
+
+      <div class="reporte-objeto__contenedor">
+
+        <!-- COLUMNA IZQUIERDA -->
+
+        <div class="reporte-objeto__intro">
+
+          <p class="reporte-objeto__etiqueta">
+            OBJETOS PERDIDOS
+          </p>
+
+          <h1 id="reporte-objeto-title">
+            Reporta un objeto
+          </h1>
+
+<p class="reporte-objeto__descripcion">
+  Cuéntanos qué objeto encontraste. La publicación
+  permitirá que su propietario pueda reconocerlo
+  y enviar una reclamación.
+</p>
+
+<div class="reporte-objeto__pasos">
+
+  <div class="reporte-objeto__paso">
+    <span>1</span>
+
+    <p>
+      Describe el objeto que encontraste.
+    </p>
+  </div>
+
+  <div class="reporte-objeto__paso">
+    <span>2</span>
+
+    <p>
+      Indica el lugar, la fecha y su estado general.
+    </p>
+  </div>
+
+  <div class="reporte-objeto__paso">
+    <span>3</span>
+
+    <p>
+      El propietario podrá enviar una reclamación
+      privada para que la revises.
+    </p>
+  </div>
+
+</div>
+
+          </div>
+
+          <div class="reporte-objeto__privacidad">
+
+            <strong>
+              Tu privacidad importa.
+            </strong>
+
+            <p>
+              Tus datos se utilizarán únicamente para revisar
+              y administrar el reporte. No se mostrarán datos
+              personales en el catálogo público.
+            </p>
+
+          </div>
+
+        </div>
+
+        <!-- FORMULARIO -->
+
+        <form
+          class="reporte-objeto__formulario"
+          data-encuentracoar-report-form
+          data-report-type="Encontrado"
+          novalidate
+        >
+
+          <h2>
+            Completa tu reporte
+          </h2>
+
+          <p class="reporte-objeto__obligatorio">
+            Los campos marcados con * son obligatorios.
+          </p>
+
+          <div
+            class="reporte-objeto__feedback"
+            data-report-feedback
+            role="status"
+            aria-live="polite"
+            tabindex="-1"
+            hidden
+          ></div>
+
+          <div class="reporte-objeto__grid">
+
+            <!-- NOMBRE DEL OBJETO -->
+
+            <div
+              class="reporte-objeto__campo
+                     reporte-objeto__campo--full"
+            >
+              <label for="objeto-nombre">
+                Nombre del objeto *
+              </label>
+
+              <input
+                id="objeto-nombre"
+                name="objectName"
+                type="text"
+                placeholder="Ejemplo: mochila azul, lentes negros o tomatodo"
+                required
+              >
+            </div>
+
+            <!-- CATEGORÍA -->
+
+            <div class="reporte-objeto__campo">
+
+              <label for="objeto-categoria">
+                Categoría *
+              </label>
+
+              <select
+                id="objeto-categoria"
+                name="category"
+                required
+              >
+                <option value="">
+                  Selecciona una categoría
+                </option>
+
+                <option value="Mochilas y loncheras">
+                  Mochilas y loncheras
+                </option>
+
+                <option value="Casacas y ropa">
+                  Casacas y ropa
+                </option>
+
+                <option value="Útiles escolares">
+                  Útiles escolares
+                </option>
+
+                <option value="Botellas y tomatodos">
+                  Botellas y tomatodos
+                </option>
+
+                <option value="Lentes">
+                  Lentes
+                </option>
+
+                <option value="Llaves">
+                  Llaves
+                </option>
+
+                <option value="Dispositivos electrónicos">
+                  Dispositivos electrónicos
+                </option>
+
+                <option value="Otros">
+                  Otros
+                </option>
+              </select>
+
+            </div>
+
+            <!-- COLOR -->
+
+            <div class="reporte-objeto__campo">
+
+              <label for="objeto-color">
+                Color principal *
+              </label>
+
+              <select
+                id="objeto-color"
+                name="color"
+                required
+              >
+                <option value="">
+                  Selecciona un color
+                </option>
+
+                <option value="Negro">
+                  Negro
+                </option>
+
+                <option value="Blanco">
+                  Blanco
+                </option>
+
+                <option value="Azul">
+                  Azul
+                </option>
+
+                <option value="Rojo">
+                  Rojo
+                </option>
+
+                <option value="Verde">
+                  Verde
+                </option>
+
+                <option value="Amarillo">
+                  Amarillo
+                </option>
+
+                <option value="Gris">
+                  Gris
+                </option>
+
+                <option value="Marrón">
+                  Marrón
+                </option>
+
+                <option value="Multicolor">
+                  Multicolor
+                </option>
+
+                <option value="Otro">
+                  Otro
+                </option>
+              </select>
+
+            </div>
+
+            <!-- MARCA -->
+
+            <div
+              class="reporte-objeto__campo"
+              data-brand-field
+            >
+              <label for="objeto-marca">
+                Marca o modelo
+              </label>
+
+              <input
+                id="objeto-marca"
+                name="brand"
+                type="text"
+                placeholder="Ejemplo: Nike, Samsung o Totto"
+              >
+            </div>
+
+            <!-- FECHA -->
+
+            <div class="reporte-objeto__campo">
+
+              <label for="objeto-fecha">
+                Fecha aproximada *
+              </label>
+
+              <input
+                id="objeto-fecha"
+                name="approximateDate"
+                type="date"
+                data-report-date
+                required
+              >
+
+            </div>
+
+            <!-- LUGAR -->
+
+            <div
+              class="reporte-objeto__campo
+                     reporte-objeto__campo--full"
+            >
+              <label for="objeto-lugar">
+                Lugar aproximado donde se perdió *
+              </label>
+
+              <input
+                id="objeto-lugar"
+                name="location"
+                type="text"
+                placeholder="Ejemplo: Biblioteca, Patio Central o Aula 4B"
+                required
+              >
+            </div>
+
+<!-- DESCRIPCIÓN COMPLEMENTARIA PÚBLICA -->
+
+<div
+  class="reporte-objeto__campo
+         reporte-objeto__campo--full"
+>
+  <label for="objeto-descripcion">
+    Descripción complementaria *
+  </label>
+
+  <textarea
+    id="objeto-descripcion"
+    name="description"
+    rows="6"
+    minlength="15"
+    maxlength="300"
+    placeholder="Ejemplo: mochila sucia, desgastada y con algunas partes rotas."
+    aria-describedby="objeto-descripcion-ayuda objeto-descripcion-feedback"
+    required
+  ></textarea>
+
+  <small
+    id="objeto-descripcion-ayuda"
+    class="reporte-objeto__ayuda"
+  >
+    Describe únicamente el estado general del objeto.
+    No publiques nombres, iniciales, contenido, códigos
+    ni detalles que permitan reclamarlo.
+  </small>
+
+  <div
+    id="objeto-descripcion-feedback"
+    class="description-privacy-feedback"
+    data-description-privacy-feedback
+    role="alert"
+    aria-live="assertive"
+    hidden
+  ></div>
+</div>
+
+            <!-- ARCHIVO REFERENCIAL -->
+
+            <div
+              class="reporte-objeto__campo
+                     reporte-objeto__campo--full"
+            >
+
+              <span class="reporte-objeto__field-label">
+                Archivo referencial
+              </span>
+
+              <div
+                class="reporte-objeto__upload"
+                data-report-upload
+              >
+
+                <input
+                  id="objeto-foto"
+                  name="photo"
+                  type="file"
+                  accept=".jpg,.jpeg,.png,.webp,.pdf,image/jpeg,image/png,image/webp,application/pdf"
+                  class="reporte-objeto__file-input"
+                >
+
+                <button
+                  class="reporte-objeto__upload-box"
+                  type="button"
+                  data-report-upload-trigger
+                  aria-describedby="objeto-foto-ayuda"
+                >
+
+                  <span class="reporte-objeto__upload-icon">
+                    ↑
+                  </span>
+
+                  <span class="reporte-objeto__upload-title">
+                    Selecciona una imagen o PDF
+                  </span>
+
+                  <span class="reporte-objeto__upload-text">
+                    Haz clic o arrastra el archivo aquí
+                  </span>
+
+                  <span
+                    class="reporte-objeto__upload-name"
+                    data-report-upload-name
+                  >
+                    Ningún archivo seleccionado
+                  </span>
+
+                </button>
+
+                <small id="objeto-foto-ayuda">
+                  Opcional. JPG, JPEG, PNG, WEBP o PDF.
+                  Máximo 1 MB.
+                </small>
+
+                <!-- VISTA PREVIA -->
+
+                <div
+                  class="reporte-objeto__image-preview"
+                  data-report-image-preview
+                  hidden
+                >
+
+                  <img
+                    src=""
+                    alt="Vista previa del archivo seleccionado"
+                    data-report-image-preview-image
+                    hidden
+                  >
+
+                  <div
+                    class="reporte-objeto__pdf-preview"
+                    data-report-pdf-preview
+                    hidden
+                  >
+                    <span class="reporte-objeto__pdf-icon">
+                      PDF
+                    </span>
+
+                    <strong data-report-pdf-name></strong>
+                  </div>
+
+                  <button
+                    type="button"
+                    class="reporte-objeto__remove-image"
+                    data-report-remove-image
+                  >
+                    Quitar archivo
+                  </button>
+
+                </div>
+
+              </div>
+            </div>
+
+            <!-- NOMBRE DEL ESTUDIANTE -->
+
+            <div class="reporte-objeto__campo">
+
+              <label for="estudiante-nombre">
+                Nombre del estudiante *
+              </label>
+
+              <input
+                id="estudiante-nombre"
+                name="studentName"
+                type="text"
+                placeholder="Nombres y apellidos"
+                required
+              >
+
+            </div>
+
+            <!-- GRADO Y SECCIÓN -->
+
+            <div class="reporte-objeto__campo">
+
+              <label for="estudiante-grado">
+                Grado y sección *
+              </label>
+
+              <input
+                id="estudiante-grado"
+                name="gradeSection"
+                type="text"
+                placeholder="Ejemplo: 4.° B"
+                required
+              >
+
+            </div>
+
+            <!-- CORREO O CONTACTO -->
+
+            <div
+              class="reporte-objeto__campo
+                     reporte-objeto__campo--full"
+            >
+
+              <label for="estudiante-contacto">
+                Correo institucional o contacto *
+              </label>
+
+              <input
+                id="estudiante-contacto"
+                name="contact"
+                type="email"
+                placeholder="nombre@lima.coar.edu.pe"
+                required
+              >
+
+            </div>
+
+          </div>
+
+          <!-- CONFIRMACIÓN -->
+
+          <label class="reporte-objeto__confirmacion">
+
+            <input
+              type="checkbox"
+              name="privacyAccepted"
+              required
+            >
+
+            <span>
+              Confirmo que la información es correcta y
+              acepto que el personal responsable revise
+              el reporte.
+            </span>
+
+          </label>
+
+          <!-- BOTÓN -->
+
+          <button
+            class="reporte-objeto__boton"
+            type="submit"
+            data-report-submit
+          >
+            Enviar reporte
+          </button>
+
+        </form>
+
+      </div>
+
+    </section>
+
+  </main>
+
+</body>
+</html>

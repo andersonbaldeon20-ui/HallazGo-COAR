@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Buscar objetos | HallaZGo</title>
+
+  <!-- TIPOGRAFÍAS -->
+
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Manrope:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- ESTILOS PRINCIPALES -->
+
+  <link
+    rel="stylesheet"
+    href="assets/css/styles.css"
+  >
+
+  <!-- DISEÑO DE LA BARRA LATERAL -->
+
+  <link
+    rel="stylesheet"
+    href="assets/css/sidebar-layout.css"
+  >
+
+</head>
+
+<body
+  data-page="buscar-objetos"
+  class="cinematic-page cinematic-search search-only"
+>
+
+  <!-- =====================================================
+       ENCABEZADO
+       ===================================================== -->
+
+  <header class="cinematic-header">
+
+    <a
+      class="cinematic-logo"
+      href="index.html"
+      aria-label="Ir al inicio de HallaZGo"
+    >
+      <span>H</span>
+      <strong>HallaZGo</strong>
+    </a>
+
+    <nav
+      class="cinematic-nav"
+      aria-label="Navegación principal"
+    >
+
+      <a href="index.html">
+        Inicio
+      </a>
+
+      <a href="reportar-objeto.html">
+        Reportar objeto
+      </a>
+
+      <a
+        class="is-active"
+        href="buscar-objetos.html"
+        aria-current="page"
+      >
+        Buscar objetos
+      </a>
+
+      <a href="mis-reportes.html">
+        Mis reportes
+      </a>
+
+      <a href="como-funciona.html">
+        Cómo funciona
+      </a>
+
+    </nav>
+
+    <a
+      class="cinematic-user"
+      href="seleccionar-rol.html"
+      aria-label="Elegir rol e ingresar"
+      title="Elegir rol e ingresar"
+    >
+      <svg
+        viewBox="0 0 48 48"
+        aria-hidden="true"
+      >
+        <circle
+          cx="24"
+          cy="16"
+          r="7"
+        ></circle>
+
+        <path
+          d="
+            M11 39
+            C11 30.5 16.5 25 24 25
+            C31.5 25 37 30.5 37 39
+          "
+        ></path>
+      </svg>
+    </a>
+
+  </header>
+
+  <!-- =====================================================
+       CONTENIDO PRINCIPAL
+       ===================================================== -->
+
+  <main>
+
+    <section
+      class="buscar-objetos buscar-editorial"
+      data-search-form-page
+    >
+
+      <div class="buscar-editorial__layout">
+
+        <!-- ===============================================
+             COLUMNA 1: PRESENTACIÓN
+             =============================================== -->
+
+        <header class="buscar-editorial__intro">
+
+          <div>
+
+            <span class="buscar-editorial__eyebrow">
+              Archivo escolar
+            </span>
+
+            <h1 class="buscar-editorial__title">
+              Buscar
+              <em>objetos.</em>
+            </h1>
+
+            <p class="buscar-editorial__description">
+              Explora los objetos registrados y combina los filtros
+              para encontrar una posible coincidencia.
+            </p>
+
+          </div>
+
+        </header>
+
+        <!-- ===============================================
+             COLUMNA 2: FILTROS
+             =============================================== -->
+
+        <section
+          class="buscar-editorial__filters"
+          aria-labelledby="filters-title"
+        >
+
+          <div class="buscar-editorial__panel-head">
+
+            <div>
+
+              <span class="buscar-editorial__eyebrow">
+                Búsqueda guiada
+              </span>
+
+              <h2
+                class="buscar-editorial__panel-title"
+                id="filters-title"
+              >
+                Filtra el archivo.
+              </h2>
+
+            </div>
+
+          </div>
+
+          <form
+            class="
+              buscar-objetos__filtros
+              buscar-editorial__form
+            "
+            data-catalog-form
+          >
+
+            <!-- NOMBRE DEL OBJETO -->
+
+            <div
+              class="
+                buscar-objetos__campo
+                buscar-objetos__campo--busqueda
+                buscar-editorial__field
+                buscar-editorial__field--full
+              "
+            >
+
+              <label for="catalog-search">
+                Nombre del objeto
+              </label>
+
+              <div class="buscar-editorial__input-wrap">
+
+                <svg
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <circle
+                    cx="10.8"
+                    cy="10.8"
+                    r="6.8"
+                  ></circle>
+
+                  <path d="m16 16 5 5"></path>
+                </svg>
+
+                <input
+                  id="catalog-search"
+                  type="search"
+                  placeholder="Ejemplo: mochila, lentes, casaca, tomatodo..."
+                  autocomplete="off"
+                  data-catalog-search
+                >
+
+              </div>
+
+            </div>
+
+            <!-- CATEGORÍA -->
+
+            <div
+              class="
+                buscar-objetos__campo
+                buscar-editorial__field
+              "
+            >
+
+              <label for="catalog-category">
+                Categoría
+              </label>
+
+              <select
+                id="catalog-category"
+                data-catalog-category
+              >
+
+                <option value="">
+                  Todas las categorías
+                </option>
+
+                <option value="Mochilas y loncheras">
+                  Mochilas y loncheras
+                </option>
+
+                <option value="Casacas y ropa">
+                  Casacas y ropa
+                </option>
+
+                <option value="Útiles escolares">
+                  Útiles escolares
+                </option>
+
+                <option value="Botellas y tomatodos">
+                  Botellas y tomatodos
+                </option>
+
+                <option value="Lentes">
+                  Lentes
+                </option>
+
+                <option value="Llaves">
+                  Llaves
+                </option>
+
+                <option value="Dispositivos electrónicos">
+                  Dispositivos electrónicos
+                </option>
+
+                <option value="Otros">
+                  Otros
+                </option>
+
+              </select>
+
+            </div>
+
+            <!-- COLOR -->
+
+            <div
+              class="
+                buscar-objetos__campo
+                buscar-editorial__field
+              "
+            >
+
+              <label for="catalog-color">
+                Color
+              </label>
+
+              <select
+                id="catalog-color"
+                data-catalog-color
+              >
+
+                <option value="">
+                  Todos los colores
+                </option>
+
+                <option value="Negro">
+                  Negro
+                </option>
+
+                <option value="Blanco">
+                  Blanco
+                </option>
+
+                <option value="Azul">
+                  Azul
+                </option>
+
+                <option value="Rojo">
+                  Rojo
+                </option>
+
+                <option value="Verde">
+                  Verde
+                </option>
+
+                <option value="Amarillo">
+                  Amarillo
+                </option>
+
+                <option value="Gris">
+                  Gris
+                </option>
+
+                <option value="Marrón">
+                  Marrón
+                </option>
+
+                <option value="Multicolor">
+                  Multicolor
+                </option>
+
+                <option value="Otro">
+                  Otro
+                </option>
+
+              </select>
+
+            </div>
+
+            <!-- LUGAR -->
+
+            <div
+              class="
+                buscar-objetos__campo
+                buscar-editorial__field
+              "
+            >
+
+              <label for="catalog-location">
+                Lugar
+              </label>
+
+              <select
+                id="catalog-location"
+                data-catalog-location
+              >
+
+                <option value="">
+                  Todos los lugares
+                </option>
+
+                <option value="Biblioteca">
+                  Biblioteca
+                </option>
+
+                <option value="Patio Central">
+                  Patio Central
+                </option>
+
+                <option value="Aula 4B">
+                  Aula 4B
+                </option>
+
+                <option value="Cafetería">
+                  Cafetería
+                </option>
+
+                <option value="Cancha">
+                  Cancha
+                </option>
+
+                <option value="Laboratorio">
+                  Laboratorio
+                </option>
+
+                <option value="Auditorio">
+                  Auditorio
+                </option>
+
+                <option value="Pasillo">
+                  Pasillo
+                </option>
+
+              </select>
+
+            </div>
+
+            <!-- ESTADO -->
+
+            <div
+              class="
+                buscar-objetos__campo
+                buscar-editorial__field
+              "
+            >
+
+              <label for="catalog-status">
+                Estado
+              </label>
+
+              <select
+                id="catalog-status"
+                data-catalog-status
+              >
+
+                <option value="">
+                  Todos los estados
+                </option>
+
+                <option value="Perdido">
+                  Perdido
+                </option>
+
+                <option value="Encontrado">
+                  Encontrado
+                </option>
+
+                <option value="En verificación">
+                  En verificación
+                </option>
+
+                <option value="Entregado">
+                  Entregado
+                </option>
+
+              </select>
+
+            </div>
+
+            <!-- BOTONES -->
+
+            <div
+              class="
+                buscar-objetos__acciones
+                buscar-editorial__actions
+              "
+            >
+
+              <div class="buscar-editorial__button-group">
+
+                <button
+                  class="
+                    buscar-objetos__buscar
+                    buscar-editorial__button
+                    buscar-editorial__button--primary
+                  "
+                  type="submit"
+                >
+
+                  <span>
+                    Buscar coincidencias
+                  </span>
+
+                  <svg
+                    viewBox="0 0 20 20"
+                    aria-hidden="true"
+                  >
+                    <path d="M3 10h13"></path>
+                    <path d="m11 5 5 5-5 5"></path>
+                  </svg>
+
+                </button>
+
+                <button
+                  class="
+                    buscar-objetos__limpiar
+                    buscar-editorial__button
+                    buscar-editorial__button--secondary
+                  "
+                  type="button"
+                  data-catalog-clear
+                >
+                  <span>
+                    Limpiar
+                  </span>
+                </button>
+
+              </div>
+
+              <p class="buscar-editorial__note">
+                Los filtros pueden combinarse.
+                Ninguno es obligatorio.
+              </p>
+
+            </div>
+
+          </form>
+
+        </section>
+
+        <!-- ===============================================
+             COLUMNA 3: RESULTADOS
+             =============================================== -->
+
+        <aside
+          class="buscar-editorial__results"
+          aria-labelledby="results-title"
+        >
+
+          <header class="buscar-editorial__results-head">
+
+            <div>
+
+              <span
+                class="
+                  buscar-editorial__eyebrow
+                  buscar-editorial__eyebrow--light
+                "
+              >
+                Vitrina activa
+              </span>
+
+              <h2
+                class="buscar-editorial__results-title"
+                id="results-title"
+              >
+                Coincidencias.
+              </h2>
+
+            </div>
+
+            <div
+              data-catalog-count
+              aria-live="polite"
+              hidden
+            ></div>
+
+          </header>
+
+          <div
+            class="
+              buscar-objetos__grid
+              buscar-editorial__grid
+            "
+            data-catalog-grid
+            aria-live="polite"
+          ></div>
+
+          <div
+            data-catalog-empty
+            hidden
+          ></div>
+
+          <div
+            class="
+              buscar-objetos__more-container
+              buscar-editorial__more-container
+            "
+          >
+
+            <button
+              class="
+                buscar-objetos__more
+                buscar-editorial__more
+              "
+              type="button"
+              data-catalog-more
+              hidden
+            >
+              Cargar más objetos
+            </button>
+
+          </div>
+
+        </aside>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- =====================================================
+       MODAL DE DETALLES
+       ===================================================== -->
+
+  <dialog
+    class="buscar-objetos__modal"
+    data-catalog-modal
+  >
+
+    <div class="buscar-objetos__modal-contenido">
+
+      <button
+        type="button"
+        class="buscar-objetos__cerrar"
+        aria-label="Cerrar detalles"
+        data-modal-close
+      >
+        ×
+      </button>
+
+      <div data-catalog-modal-content></div>
+
+    </div>
+
+  </dialog>
+
+  <!-- =====================================================
+       MODAL DE RECLAMACIÓN
+       ===================================================== -->
+
+  <dialog
+    class="buscar-objetos__modal"
+    data-claim-modal
+  >
+
+    <div class="buscar-objetos__modal-contenido">
+
+      <button
+        type="button"
+        class="buscar-objetos__cerrar"
+        aria-label="Cerrar solicitud"
+        data-claim-close
+      >
+        ×
+      </button>
+
+      <h2>
+        Solicitar devolución
+      </h2>
+
+      <p class="buscar-objetos__modal-text">
+        Indica una característica que demuestre que el objeto
+        te pertenece. No incluyas datos personales sensibles.
+      </p>
+
+      <form data-claim-form>
+
+        <label for="claim-proof">
+          Descripción de verificación
+        </label>
+
+        <textarea
+          id="claim-proof"
+          rows="4"
+          required
+          placeholder="Ejemplo: Tiene una pequeña marca roja en la parte interna..."
+        ></textarea>
+
+        <button
+          class="buscar-objetos__buscar"
+          type="submit"
+        >
+          Enviar solicitud
+        </button>
+
+        <p
+          class="buscar-objetos__claim-feedback"
+          data-claim-feedback
+        ></p>
+
+      </form>
+
+    </div>
+
+  </dialog>
+
+  <!-- =====================================================
+       SCRIPTS
+       ===================================================== -->
+
+  <!-- Crea la barra vertical en ventanas medianas -->
+
+  <script
+    src="assets/js/responsive-sidebar.js"
+    defer
+  ></script>
+
+  <!-- Funciones generales del sitio -->
+
+  <script
+    src="assets/js/app.js"
+    defer
+  ></script>
+
+  <!-- REDIRECCIÓN HACIA RESULTADOS -->
+
+  <script>
+    (() => {
+      const form = document.querySelector(
+        "[data-catalog-form]"
+      );
+
+      const clearButton = document.querySelector(
+        "[data-catalog-clear]"
+      );
+
+      if (!(form instanceof HTMLFormElement)) {
+        return;
+      }
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const search =
+          document
+            .querySelector(
+              "[data-catalog-search]"
+            )
+            ?.value.trim() || "";
+
+        const category =
+          document
+            .querySelector(
+              "[data-catalog-category]"
+            )
+            ?.value || "";
+
+        const color =
+          document
+            .querySelector(
+              "[data-catalog-color]"
+            )
+            ?.value || "";
+
+        const location =
+          document
+            .querySelector(
+              "[data-catalog-location]"
+            )
+            ?.value || "";
+
+        const status =
+          document
+            .querySelector(
+              "[data-catalog-status]"
+            )
+            ?.value || "";
+
+        const params = new URLSearchParams();
+
+        if (search) {
+          params.set("q", search);
+        }
+
+        if (category) {
+          params.set(
+            "categoria",
+            category
+          );
+        }
+
+        if (color) {
+          params.set(
+            "color",
+            color
+          );
+        }
+
+        if (location) {
+          params.set(
+            "lugar",
+            location
+          );
+        }
+
+        if (status) {
+          params.set(
+            "estado",
+            status
+          );
+        }
+
+        const query = params.toString();
+
+        window.location.href = query
+          ? `resultados-busqueda.html?${query}`
+          : "resultados-busqueda.html";
+      });
+
+      clearButton?.addEventListener(
+        "click",
+        () => {
+          form.reset();
+        }
+      );
+    })();
+  </script>
+
+</body>
+
+</html>

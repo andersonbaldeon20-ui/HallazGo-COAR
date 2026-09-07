@@ -1,0 +1,46 @@
+HALLAZGO — CHAT DE COORDINACIÓN
+================================
+
+ARCHIVOS INCLUIDOS
+
+1. revisar-reclamacion.html
+2. assets/js/revisar-reclamacion.js
+3. chat.html
+4. assets/js/chat-supabase.js
+5. assets/css/chat.css
+
+INSTALACIÓN
+
+Copia y reemplaza:
+
+HallaZGo-Web/revisar-reclamacion.html
+HallaZGo-Web/assets/js/revisar-reclamacion.js
+
+Copia como archivos nuevos:
+
+HallaZGo-Web/chat.html
+HallaZGo-Web/assets/js/chat-supabase.js
+HallaZGo-Web/assets/css/chat.css
+
+NO MODIFIQUES TODAVÍA
+
+- Las tablas de Supabase ya creadas.
+- Las políticas RLS.
+- El trigger sincronizar_chat_reclamacion.
+- La publicación supabase_realtime.
+
+FLUJO
+
+reclamación aceptada
+→ el trigger crea la conversación
+→ aparece "Coordinar entrega"
+→ chat.html?id=<uuid>
+→ los participantes autorizados leen/escriben según RLS
+→ mensajes nuevos aparecen mediante Supabase Realtime
+
+NOTA DE SEGURIDAD
+
+El JavaScript evita números móviles peruanos como protección de interfaz.
+La restricción definitiva contra números telefónicos debe añadirse también
+en PostgreSQL para que no pueda saltarse desde DevTools. Esa capa se puede
+agregar después de probar primero el flujo básico.
