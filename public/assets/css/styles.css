@@ -11765,3 +11765,18 @@ body[data-page="index"] main {
   min-height: 100vh;
   background: #ddd6ca;
 }
+
+/*
+ * La portada usa un encabezado fijo superpuesto al hero. Las reglas comunes
+ * de las páginas interiores reservan 84 px en el body y otros 84 px en main;
+ * en el inicio esa doble reserva dejaba una franja vacía bajo la navegación.
+ */
+body[data-page="index"].cinematic-home {
+  padding-top: 0 !important;
+  background: #09090b !important;
+}
+
+body[data-page="index"].cinematic-home main {
+  padding-top: 0 !important;
+  background: #09090b;
+}
